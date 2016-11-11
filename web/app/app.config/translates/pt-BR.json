@@ -1,0 +1,26 @@
+{
+  // GLOBAL LABELS
+  "EMAIL": "Email",
+  "NAME": "Name",
+  "USERNAME": "Usuário",
+  "PASSWORD": "Password",
+  "PUBLIC": "Público",
+  "FRIENDS": "Amigos",
+  "ONLY_ME": "Somente Eu",
+  "GENDER": "Gênero",
+  "MALE": "Masculido",
+  "FEMALE": "Feminino",
+  "MARRIED": "Casado",
+  "SINGLE": "Solteiro",
+
+
+  // GLOBAL PLACEHOLDERS
+  "PLACEHOLDER_EMAIL": "email@seudominio.com",
+  "PLACEHOLDER_USERNAME": "usuário",
+  "PLACEHOLDER_NAME": "Name",
+
+
+  // PROFILE EDIT
+  "ACCOUNT_SETTING": "Configurações de Conta",
+  "PROFILE_SETTING": "Configurações do Perfil"
+}

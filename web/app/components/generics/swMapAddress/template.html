@@ -1,0 +1,18 @@
+<label for="event-address">
+  Endereço:
+  <span ng-if="ctrl.required" class="icon-red">*</span>
+</label>
+<p class="input-group">
+  <input
+    name="{{ctrl.componentName}}"
+    type="text"
+    class="form-control"
+    ng-model="ctrl.address.FormattedAddress"
+    ng-required="ctrl.required"
+    ng-readonly="ctrl.address.Coordinates ? false : true">
+  <span class="input-group-btn">
+    <button ng-click="ctrl.openMap()" class="btn btn-default">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+  </span>
+</p>

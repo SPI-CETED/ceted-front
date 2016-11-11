@@ -1,0 +1,6 @@
+{
+    "appName": "secret-wishes",
+    "appVersion": 1.0,
+    "apiUrl": "http://localhost:8081",
+    "apiAuthUrl": ""
+}

@@ -1,0 +1,21 @@
+<label ng-if="ctrl.label" for="{{ctrl.componentName}}">
+    {{ctrl.label}}
+    <span ng-if="ctrl.required" class="icon-red">*</span>
+</label>
+
+<div class="input-group">
+  <div ng-if="ctrl.money" class="input-group-addon">{{ctrl.currency ? ctrl.currency : 'R$'}}</div>
+  <input
+    id="{{ctrl.componentId}}"
+    name="{{ctrl.componentName}}"
+    type="text"
+    class="form-control"
+    ng-model="ctrl.value"
+    ng-blur="ctrl.blur(ctrl.model, ctrl.helper)"
+    ng-change="ctrl.changeModel()"
+    ng-required="ctrl.required"
+    ng-disabled="{{ctrl.disabled}}"
+    placeholder="{{ctrl.placeholder}}"
+    >
+  <div ng-if="ctrl.percentage" class="input-group-addon">%</div>
+</div>

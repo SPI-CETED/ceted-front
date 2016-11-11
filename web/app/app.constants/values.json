@@ -1,0 +1,86 @@
+{
+  "VALUES": {
+    "STATES": [{
+      "value": "AC",
+      "label": "AC - Acre"
+    }, {
+      "value": "AL",
+      "label": "AL - Alagoas"
+    }, {
+      "value": "AM",
+      "label": "AM - Amazonas"
+    }, {
+      "value": "AP",
+      "label": "AP - Amapá"
+    }, {
+      "value": "BA",
+      "label": "BA - Bahia"
+    }, {
+      "value": "CE",
+      "label": "CE - Ceará"
+    }, {
+      "value": "DF",
+      "label": "DF - Distrito Federal"
+    }, {
+      "value": "ES",
+      "label": "ES - Espírito Santo"
+    }, {
+      "value": "GO",
+      "label": "GO - Goiás"
+    }, {
+      "value": "MA",
+      "label": "MA - Maranhão"
+    }, {
+      "value": "MG",
+      "label": "MG - Minas Gerais"
+    }, {
+      "value": "MS",
+      "label": "MS - Mato Grosso do Sul"
+    }, {
+      "value": "MT",
+      "label": "MT - Mato Grosso"
+    }, {
+      "value": "PA",
+      "label": "PA - Pará"
+    }, {
+      "value": "PB",
+      "label": "PB - Paraíba"
+    }, {
+      "value": "PE",
+      "label": "PE - Pernambuco"
+    }, {
+      "value": "PI",
+      "label": "PI - Piauí"
+    }, {
+      "value": "PR",
+      "label": "PR - Paraná"
+    }, {
+      "value": "RJ",
+      "label": "RJ - Rio de Janeiro"
+    }, {
+      "value": "RN",
+      "label": "RN - Rio Grande do Norte"
+    }, {
+      "value": "RS",
+      "label": "RS - Rio Grande do Sul"
+    }, {
+      "value": "RO",
+      "label": "RO - Rondônia"
+    }, {
+      "value": "RR",
+      "label": "RR - Roraima"
+    }, {
+      "value": "SC",
+      "label": "SC - Santa Catarina"
+    }, {
+      "value": "SE",
+      "label": "SE - Sergipe"
+    }, {
+      "value": "SP",
+      "label": "SP - São Paulo"
+    }, {
+      "value": "TO",
+      "label": "TO - Tocantins"
+    }]
+  }
+}

@@ -1,0 +1,51 @@
+sw-login {
+
+	.login-layout {
+		background-image: url('../img/bg-login.jpg');
+		
+		.panel-body {
+			background-color: rgba(255,255,255,0.85);
+		}
+
+		.btn {
+			padding: 10px 15px;
+			text-transform: uppercase;
+			border-radius: 0;
+		}
+
+		.login-avatar {
+		    width: 175px;
+		    height: 175px;
+		    display: block;
+		    margin: 20px auto 30px;
+		    border-radius: 50%;
+	
+		    img {
+		    	width: 100%;
+		    	border-radius: 50%;
+			}
+		}
+	}
+
+	.vd_input-wrapper  {
+		box-shadow: initial;
+		border: 0;
+		background-color: transparent;
+
+		input {
+			background-color: #fff;
+			border: solid 1px #999;
+			font-size: 14px;
+			padding: 10px 10px 10px 38px;
+		}
+
+		.menu-icon {
+			top: 12px;
+		}
+	}
+
+	.vd_content-section {
+		background: transparent;
+	}
+
+}

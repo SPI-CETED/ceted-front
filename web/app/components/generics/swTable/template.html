@@ -1,0 +1,106 @@
+<div class="un-box shadow">
+	<div data-ng-class="{'un-box__header' : ctrl.mergedOptions.title}">
+		<div class="row">
+			<div class="col-md-6">
+				<div data-ng-if="ctrl.mergedOptions.title">{{ ctrl.mergedOptions.title }}</div>
+			</div>
+			<div class="col-md-6">
+				<un-table-actions
+					data-ng-if="ctrl.mergedOptions.titleActions"
+					template="ctrl.mergedOptions.titleActions.template"
+					caller="ctrl.caller">
+				</un-table-actions>
+			</div>
+		</div>
+	</div>
+	<div class="un-box__body">
+		<table st-table="ctrl.resource"
+				st-safe-src="ctrl.safeResource"
+				class="table un-table table-striped"
+				id="{{ctrl.mergedOptions.id}}">
+			<thead>
+				<th class="un-table__search" data-ng-if="ctrl.mergedOptions.showSearch"
+					class="grid-search"
+					colspan="{{ctrl.mergedOptions.columns.length}}">
+					<div class="un-table__search__box">
+						<i class="fa fa-filter"></i>
+						<input st-search
+							ng-click="ctrl.toggleFilterWidthClick($event)"
+							ng-blur="ctrl.toggleFilterWidthBlur($event)"
+							placeholder="Filtrar por..."
+							class="input-sm form-control"
+							type="search"/>
+					</div>
+				</th>
+				<tr>
+					<th data-ng-repeat="column in ctrl.mergedOptions.columns"
+					ng-show="{{::!column.hidden}}"
+						class="{{column.headerClass}}"
+						data-ng-class="{'cursor-pointer' : column.sortBy}"
+						data-ng-style="{'width': column.width}"
+						st-sort="{{column.sortBy}}"
+						st-sort-default="{{column.sortDefault}}">
+							<un-table-actions
+								data-ng-if="column.headerActions"
+								template="column.headerActions.template"
+								caller="ctrl.caller">
+							</un-table-actions>
+							<span data-ng-if="!column.headerActions">
+								{{column.title}}
+							</span>
+					</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr data-ng-if="(ctrl.resource.length == 0 || !ctrl.resource)">
+				<td	colspan="100%" class="text-center">
+					<h5>
+						{{ctrl.mergedOptions.labelSemResultado || 'Nenhum resultado encontrado'}}
+					</h5>
+				</td>
+			</tr>
+			<tr data-ng-click="ctrl.mergedOptions.rowClick ? ctrl.selectRow(row) : undefined"
+				data-ng-repeat="row in ctrl.resource"
+				data-ng-class="{
+					'selected-row': row._isSelected,
+					'cursor-pointer': ctrl.mergedOptions.rowClick,
+					'disabled': row._isDisabled
+				}">
+				<td data-ng-repeat="column in ctrl.mergedOptions.columns"
+					ng-show="{{::!column.hidden}}"
+					class="{{column.cellClass}}">
+					<un-cell cell-template="column.template"
+						parent-row="row"
+						table-ctrl="ctrl"
+						caller="ctrl.caller">
+					</un-cell>
+					<span data-ng-if="!column.template" data-ng-bind="ctrl.renderModel(row, $parent.column.model)"></span>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td data-ng-if="ctrl.mergedOptions.showPaginator"
+					colspan="{{ctrl.mergedOptions.columns.length}}"
+					class="">
+					<div class="row">
+						<div class="col-md-6">
+							<un-table-actions
+								template="ctrl.mergedOptions.footerActions.template"
+								caller="ctrl.caller">
+							</un-table-actions>
+						</div>
+						<div class="col-md-6">
+							<div st-pagination=""
+								st-items-by-page="ctrl.mergedOptions.itemsByPage"
+								st-displayed-pages="ctrl.mergedOptions.displayedPages"
+								class="un-pagination">
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+	</div>
+</div>
