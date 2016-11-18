@@ -20,21 +20,7 @@ module.exports = [
 				}
 			})
 
-			// ---------------------------------------------------------------------------
-			// register user
-			// ---------------------------------------------------------------------------
 
-			.state('register-user', {
-				url: '/register-user',
-				views: {
-					'container@': {
-						template: '<sw-register-user>'
-					}
-				},
-				data: {
-					requireLogin: false,
-				}
-			})
 
 			// ---------------------------------------------------------------------------
 			// base
@@ -75,7 +61,7 @@ module.exports = [
 			})
 
 			// ---------------------------------------------------------------------------
-			// profile
+			// Skill
 			// ---------------------------------------------------------------------------
 
 			.state('base.secured.skill', {
@@ -123,21 +109,22 @@ module.exports = [
 			})
 
 			// ---------------------------------------------------------------------------
-			// config
+			// user
 			// ---------------------------------------------------------------------------
-			.state('base.secured.config-system', {
-				url: '/config-system',
+
+			.state('base.secured.user', {
+				url: '/user',
 				abstract: true,
 				data: {
 					requireLogin: true,
 				}
 			})
 
-			.state('base.secured.config-system.create', {
+			.state('base.secured.user.create', {
 				url: '/create',
 				views: {
-					'container@base': {
-						template: '<sw-config-system-create>'
+					'container@': {
+						template: '<sw-user-create>'
 					}
 				},
 				data: {
@@ -145,11 +132,11 @@ module.exports = [
 				}
 			})
 
-			.state('base.secured.config-system.detail', {
-				url: '/detail/{id:int}',
+			.state('base.secured.user.edit', {
+				url: '/edit',
 				views: {
-					'container@base': {
-						template: '<sw-config-system-create>'
+					'container@': {
+						template: '<sw-user-edit>'
 					}
 				},
 				data: {
@@ -157,17 +144,17 @@ module.exports = [
 				}
 			})
 
-			.state('base.secured.config-system.list', {
+			.state('base.secured.user.list', {
 				url: '/list',
 				views: {
-					'container@base': {
-						template: '<sw-config-system-list>'
+					'container@': {
+						template: '<sw-user-list>'
 					}
 				},
 				data: {
 					requireLogin: true,
 				}
-			});
+			})
 
 	}
 ];
