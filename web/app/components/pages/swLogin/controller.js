@@ -12,7 +12,7 @@
 
           self.doLogin = function() {
             loginService.login(self.user).then(function(data) {
-              $state.go('base.secured.home');
+
             }, function(err) {
               if ([400, 404].indexOf(err.status) >= 0) {
                 pnotifyService.error('Usuário e/ou senha inválidos.');
