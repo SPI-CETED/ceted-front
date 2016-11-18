@@ -90,7 +90,7 @@ module.exports = [
 				url: '/create',
 				views: {
 					'container@base': {
-						template: '<sw-skill>'
+						template: '<sw-skill-create>'
 					}
 				},
 				data: {
@@ -102,7 +102,19 @@ module.exports = [
 				url: '/edit',
 				views: {
 					'container@base': {
-						template: '<sw-skill>'
+						template: '<sw-skill-create>'
+					}
+				},
+				data: {
+					requireLogin: true,
+				}
+			})
+
+			.state('base.secured.skill.list', {
+				url: '/list',
+				views: {
+					'container@base': {
+						template: '<sw-skill-list>'
 					}
 				},
 				data: {
