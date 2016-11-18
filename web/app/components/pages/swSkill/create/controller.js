@@ -2,9 +2,9 @@
     'use strict';
 
     module.exports = [
-      function SwSkillController() {
+      function SwSkillCreateController() {
           var self = this;
-          
+
       }
     ];
 })();
