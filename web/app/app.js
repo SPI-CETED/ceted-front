@@ -18,7 +18,6 @@ angular.module('you-movin', [
   'ngAnimate',
   'smart-table',
   'ngBootbox',
-  'uiGmapgoogle-maps',
   'ngFileUpload',
   'angular-img-cropper',
   'ngCropper',
@@ -40,7 +39,7 @@ angular.module('you-movin', [
     "loginService",
 		function($rootScope, $state, CONFIG, loginService) {
 			$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        
+
 			});
 		}
 ]);

@@ -28,7 +28,6 @@ gulp.task('vendor_scripts', ['bower'], function() {
     './bower_components/ngBootbox/dist/ngBootbox.min.js',
     './bower_components/angular-locale-pt-br/index.js',
     './bower_components/lodash/dist/lodash.min.js',
-    './bower_components/angular-google-maps/dist/angular-google-maps.min.js',
     './bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
     './bower_components/ng-file-upload/ng-file-upload.min.js',
     './bower_components/angular-img-cropper/dist/angular-img-cropper.min.js',
