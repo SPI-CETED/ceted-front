@@ -4,8 +4,8 @@ module.exports = [
 	'$locationProvider',
 	function($stateProvider, $urlRouterProvider, $locationProvider) {
 		$locationProvider.html5Mode(true);
-		
-		$urlRouterProvider.otherwise("/home");
+
+		$urlRouterProvider.otherwise("/auth");
 
 		$stateProvider
 			.state('auth', {
@@ -75,39 +75,22 @@ module.exports = [
 			})
 
 			// ---------------------------------------------------------------------------
-			// home
-			// ---------------------------------------------------------------------------
-
-			.state('base.secured.home', {
-				url: '/home',
-				params: {'firstLogin' : null},
-				views: {
-					'container@base': {
-						template: '<sw-home>'
-					}
-				},
-				data: {
-					requireLogin: true,
-				}
-			})
-
-			// ---------------------------------------------------------------------------
 			// profile
 			// ---------------------------------------------------------------------------
 
-			.state('base.secured.profile', {
-				url: '/profile',
+			.state('base.secured.skill', {
+				url: '/skill',
 				abstract: true,
 				data: {
 					requireLogin: true,
 				}
 			})
 
-			.state('base.secured.profile.edit', {
-				url: '/edit/{nickname}',
+			.state('base.secured.skill.create', {
+				url: '/create',
 				views: {
 					'container@base': {
-						template: '<sw-profile-edit>'
+						template: '<sw-skill>'
 					}
 				},
 				data: {
@@ -115,11 +98,11 @@ module.exports = [
 				}
 			})
 
-			.state('base.secured.profile.view', {
-				url: '/view',
+			.state('base.secured.skill.edit', {
+				url: '/edit',
 				views: {
 					'container@base': {
-						template: '<sw-profile-view>'
+						template: '<sw-skill>'
 					}
 				},
 				data: {

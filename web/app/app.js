@@ -39,37 +39,8 @@ angular.module('you-movin', [
 		"CONFIG",
     "loginService",
 		function($rootScope, $state, CONFIG, loginService) {
-      angular.element(document).on("click", function(e) {
-    		$rootScope.$broadcast("documentClicked", angular.element(e.target));
-    	});
-
 			$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-        var loggedUser = loginService.getLoggedUserLocalStorage('loggedUser');
-
-
-        if (!$rootScope.userAuthenticated && loggedUser) {
-          $rootScope.loggedUser = loggedUser;
-          $rootScope.userAuthenticated = true;
-        }
-
-        var requireLogin = toState.data.requireLogin;
-
-        if (requireLogin) {
-          loginService.checkAuth();
-        }
-
-				var isAuthPage = toState.name === 'auth';
-				var haveToGoAuth = requireLogin && !loggedUser && !isAuthPage;
-
-        if (isAuthPage && $rootScope.userAuthenticated) {
-          $state.go('base.secured.home');
-        }
-
-				else if (haveToGoAuth) {
-					event.preventDefault();
-					$state.go('auth');
-				}
-
+        
 			});
 		}
 ]);
