@@ -265,7 +265,7 @@ module.exports={
 
 },{}],8:[function(require,module,exports){
 module.exports={
-   "appName": "secret-wishes",
+   "appName": "CETED",
    "appVersion": 1,
    "apiUrl": "http://localhost:8081",
    "apiAuthUrl": "",
@@ -675,7 +675,7 @@ angular.module('you-movin', [
 
 })();
 
-},{"./app.config":4,"./app.constants/configSecretWishes":8,"./app.constants/values":9,"./app.directives":12,"./app.filters":20,"./app.interceptors":23,"./components":67,"./services":95}],25:[function(require,module,exports){
+},{"./app.config":4,"./app.constants/configSecretWishes":8,"./app.constants/values":9,"./app.directives":12,"./app.filters":20,"./app.interceptors":23,"./components":67,"./services":77}],25:[function(require,module,exports){
 var swLoader = require('./swLoader');
 var swBase = require('./swBase');
 var swMenu = require('./swMenu');
@@ -1692,237 +1692,12 @@ module.exports = angular.module('you-movin.components', [
 
 },{"./generics":25,"./pages":68}],68:[function(require,module,exports){
 var swLogin = require('./swLogin');
-var swHome = require('./swHome');
-
-var swConfigSystemCreate = require('./swConfigSystem/create');
-var swConfigSystemList = require('./swConfigSystem/list');
-
-var swRegisterUser = require('./swRegisterUser');
-
-var swProfileEdit = require('./swProfile/edit');
-var swProfileView = require('./swProfile/view');
 
 module.exports = angular.module('you-movin.components.pages', [
-  swLogin,
-  swHome,
-
-  swConfigSystemCreate,
-  swConfigSystemList,
-  swRegisterUser,
-  
-  swProfileEdit,
-  swProfileView
+  swLogin
 ]).name;
 
-},{"./swConfigSystem/create":71,"./swConfigSystem/list":74,"./swHome":77,"./swLogin":80,"./swProfile/edit":83,"./swProfile/view":86,"./swRegisterUser":89}],69:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-    restrict: 'E',
-    templateUrl: 'app/components/pages/swConfigSystem/create/template.html',
-    controllerAs: 'ctrl',
-    bindings: {
-    },
-    controller: controller
-};
-
-},{"./controller":70}],70:[function(require,module,exports){
-(function() {
-    'use strict';
-
-    module.exports = [
-        '$state',
-        'configSystemService',
-        'validationService',
-        'toastrService',
-        'bootBoxService',
-        function YmConfigSystemCreateController($state, configSystemService, validationService, toastrService, bootBoxService) {
-            // PRIVATE VARIABLES
-            var self = this;
-
-            // PUBLIC VARIABLES
-            self.configSystem = {};
-            self.isDetail = $state.is('base.secured.config-system.detail');
-
-            // PRIVATE METHODS
-            function _init() {
-                if (self.isDetail) {
-                    _load();
-                }
-            }
-
-            function _load() {
-                configSystemService.getById($state.params.id)
-                    .then(function(result) {
-                        self.configSystem = result.data;
-                    });
-            }
-
-            // PUBLIC METHODS
-            self.save = function() {
-                if (!validationService.validateForm(self.formConfigSystem)) {
-                    toastrService.error('fieldsInvalids');
-                    return;
-                }
-
-                var save = self.configSystem.Id ? configSystemService.update(self.configSystem) : configSystemService.create(self.configSystem);
-
-                save.then(
-                    function(result) {
-                        toastrService.success('CONFIG_SYSTEM_SAVE_SUCCESS');
-                        if (!self.isDetail) {
-                            $state.go('base.secured.config-system.detail', { id: result.data.Id });
-                        }
-                    },
-                    function(err) {
-                        toastrService.error(err.data.code, [ self.configSystem.Key ]);
-                    });
-            };
-
-            self.resolveKey = function() {
-                if (self.configSystem.Key) {
-                    self.configSystem.Key = self.configSystem.Key.toUpperCase().replace(/[^A-Z0-9_]+/g, '');
-                }
-            };
-
-            self.$onInit = _init;
-        }
-    ];
-})();
-
-},{}],71:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swConfigSystemCreate', [])
-    .component('swConfigSystemCreate', component)
-    .name;
-
-},{"./component":69}],72:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-    restrict: 'E',
-    templateUrl: 'app/components/pages/swConfigSystem/list/template.html',
-    controllerAs: 'ctrl',
-    bindings: {
-    },
-    controller: controller
-};
-
-},{"./controller":73}],73:[function(require,module,exports){
-(function() {
-    'use strict';
-
-    module.exports = [
-        '$state',
-        'configSystemService',
-        'toastrService',
-        'bootBoxService',
-        function YmConfigSystemListController($state, configSystemService, toastrService, bootBoxService) {
-            // PRIVATE VARIABLES
-            var self = this;
-
-            // PUBLIC VARIABLES
-            self.configSytems = [];
-            self.configSytemTableOptions = _getconfigSytemTableOptions()
-
-            // PRIVATE METHODS
-            function _init() {
-                configSystemService.getAll()
-                    .then(
-                        function(result) {
-                            self.configSytems = result.data;
-                            _updateGrid();
-                        },
-                        function(err) {
-                            toastrService.error(err.code);
-                        });
-            }
-
-            function _goDetail(rowData) {
-                $state.go('base.secured.config-system.detail', { id: rowData.Id });
-            }
-
-            function _updateGrid() {
-                self.gridConfigSytems = self.configSytems;
-            }
-
-            function _removeConfigSystemOfList(configSytem) {
-                var index = self.configSytems.indexOf(configSytem);
-
-                if (index > -1) {
-                    self.configSytems.splice(index, 1);
-                    _updateGrid();
-                }
-            }
-
-            function _getconfigSytemTableOptions() {
-                return {
-                    title: 'Configurações',
-                    rowClick: _goDetail,
-                    showSearch: true,
-                    showPaginator: true,
-                    itemsByPage: 20,
-                    columns:
-                    [
-                        {
-                            title: 'Chave',
-                            model: 'Key',
-                            width: '50%'
-                        },
-                        {
-                            title: 'Valor',
-                            model: 'Value',
-                            width: '50%'
-                        },
-
-                    ]
-                };
-            }
-
-            self.$onInit = _init;
-        }
-    ];
-})();
-
-},{}],74:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swConfigSystemList', [])
-    .component('swConfigSystemList', component)
-    .name;
-
-},{"./component":72}],75:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-  restrict: 'E',
-  templateUrl: 'app/components/pages/swHome/template.html',
-  controllerAs: 'ctrl',
-  bindings: {
-  },
-  controller: controller
-};
-
-},{"./controller":76}],76:[function(require,module,exports){
-module.exports = [
-  '$timeout',
-  '$state',
-  function SwHomeController($timeout, $state) {
-    var self = this;
-
-    self.isFirtLogin = $state.current.data.firstLogin;
-    
-}];
-
-},{}],77:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swHome', [])
-	.component('swHome', component)
-	.name;
-
-},{"./component":75}],78:[function(require,module,exports){
+},{"./swLogin":71}],69:[function(require,module,exports){
 var controller = require('./controller');
 
 module.exports = {
@@ -1934,7 +1709,7 @@ module.exports = {
   controller: controller
 };
 
-},{"./controller":79}],79:[function(require,module,exports){
+},{"./controller":70}],70:[function(require,module,exports){
 (function () {
     'use strict';
 
@@ -1960,197 +1735,14 @@ module.exports = {
     ];
 })();
 
-},{}],80:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 var component = require('./component');
 
 module.exports = angular.module('swLogin', [])
 	.component('swLogin', component)
 	.name;
 
-},{"./component":78}],81:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-  restrict: 'E',
-  templateUrl: 'app/components/pages/swProfile/edit/template.html',
-  controllerAs: 'ctrl',
-  bindings: {
-  },
-  controller: controller
-};
-
-},{"./controller":82}],82:[function(require,module,exports){
-(function () {
-    'use strict';
-
-    module.exports = [
-      '$rootScope',
-      '$state',
-      'VALUES',
-      'profileService',
-      'genderService',
-      'maritialStatusService',
-      'validationService',
-      'pnotifyService',
-      function SwProfileEditController($rootScope, $state, VALUES, profileService, genderService, maritialStatusService, validationService, pnotifyService) {
-        var self = this;
-
-        self.genders = [];
-        self.user = {};
-        self.states = VALUES.STATES;
-
-        var init = function() {
-          getUserData();
-          getGender();
-          findAllMaritialStatus();
-        };
-
-        var findAllMaritialStatus = function() {
-          maritialStatusService.findAll().then(function(data) {
-            self.maritialsStatus = data.data;
-          });
-        };
-
-        var getGender = function() {
-          genderService.findAll().then(function(data) {
-            self.genders = data.data;
-          });
-        };
-
-        var getUserData = function() {
-          profileService.findPerfil($state.params.nickname).then(function(data) {
-            self.user = data.data;
-            console.log(data.data)
-          });
-        };
-
-        self.$onInit = function() {
-          init();
-        };
-
-        self.save = function() {
-          if (!validationService.validateForm(self.userForm)) {
-              pnotifyService.error('Alguns campos estão inválidos');
-          } else {
-            if (!self.user.perfilComplete) {
-              self.user._isFirtUpdate = true;
-            }
-
-            profileService.update(self.user).then(function(data) {
-              self.user = data.data;
-              if (data.message === 'USER_UPDATED') {
-                pnotifyService.success('Registro salvo com sucesso.');
-              }
-
-              if (data.message ===  'PERFIL_COMPLETED_SUCCESS') {
-                pnotifyService.success('Parabéns! Seu perfil está completo agora.');
-              }
-            });
-          }
-        };
-      }
-    ];
-})();
-
-},{}],83:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swProfileEdit', [])
-	.component('swProfileEdit', component)
-	.name;
-
-},{"./component":81}],84:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-  restrict: 'E',
-  templateUrl: 'app/components/pages/swProfile/view/template.html',
-  controllerAs: 'ctrl',
-  bindings: {
-  },
-  controller: controller
-};
-
-},{"./controller":85}],85:[function(require,module,exports){
-(function () {
-    'use strict';
-
-    module.exports = [
-      function SwRegisterUserController() {
-        
-      }
-    ];
-})();
-
-},{}],86:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swProfileView', [])
-	.component('swProfileView', component)
-	.name;
-
-},{"./component":84}],87:[function(require,module,exports){
-var controller = require('./controller');
-
-module.exports = {
-  restrict: 'E',
-  templateUrl: 'app/components/pages/swRegisterUser/template.html',
-  controllerAs: 'ctrl',
-  bindings: {
-  },
-  controller: controller
-};
-
-},{"./controller":88}],88:[function(require,module,exports){
-(function () {
-    'use strict';
-
-    module.exports = [
-      '$state',
-      'pnotifyService',
-      'validationService',
-      'profileService',
-      'loginService',
-      function SwRegisterUserController($state, pnotifyService, validationService, profileService, loginService) {
-          var self = this;
-
-          self.registerUser = {};
-
-          self.register = function() {
-            if(!validationService.validateForm(self.formRegister)) {
-              pnotifyService.error('Alguns campos estão inválidos.');
-              return;
-            }
-
-            if (!self.registerUser.termsUse) {
-              pnotifyService.error('Aceite os termos de uso para continuar.');
-              return;
-            }
-
-            if (self.registerUser.password && self.registerUser.confirmpass && self.registerUser.password !== self.registerUser.confirmpass) {
-              self.formRegister['password']._errorClass = 'has-error';
-              self.formRegister['confirmpass']._errorClass = 'has-error';
-              pnotifyService.error('As senhas não conferem.');
-              return;
-            }
-
-            profileService.register(self.registerUser).then(function(data) {
-              loginService.saveLoggedUserLocalStorage(data);
-              $state.go('base.secured.home', {firstLogin: true});
-            })
-          }
-      }
-    ];
-})();
-
-},{}],89:[function(require,module,exports){
-var component = require('./component');
-
-module.exports = angular.module('swRegisterUser', [])
-	.component('swRegisterUser', component)
-	.name;
-
-},{"./component":87}],90:[function(require,module,exports){
+},{"./component":69}],72:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2191,7 +1783,7 @@ module.exports = angular.module('swRegisterUser', [])
 
 })();
 
-},{}],91:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2229,7 +1821,7 @@ module.exports = angular.module('swRegisterUser', [])
 
 })();
 
-},{}],92:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2282,7 +1874,7 @@ module.exports = angular.module('swRegisterUser', [])
 
 })();
 
-},{}],93:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2351,7 +1943,7 @@ module.exports = angular.module('swRegisterUser', [])
 
 })();
 
-},{}],94:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2374,7 +1966,7 @@ module.exports = angular.module('swRegisterUser', [])
 
 })();
 
-},{}],95:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 var loaderService = require('./loader');
 var toastrService = require('./toastr');
 var bootBoxService = require('./bootbox');
@@ -2406,7 +1998,7 @@ module.exports =  angular.module('you-movin.services', [
   ])
   .name;
 
-},{"./blob":90,"./bootbox":91,"./configSystem":92,"./date":93,"./gender-service":94,"./loader":96,"./login-service":97,"./maritial-status-service":98,"./modal":99,"./pnotify-service":100,"./profile-service":101,"./toastr":102,"./validation":103}],96:[function(require,module,exports){
+},{"./blob":72,"./bootbox":73,"./configSystem":74,"./date":75,"./gender-service":76,"./loader":78,"./login-service":79,"./maritial-status-service":80,"./modal":81,"./pnotify-service":82,"./profile-service":83,"./toastr":84,"./validation":85}],78:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2430,7 +2022,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],97:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2481,7 +2073,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],98:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2503,7 +2095,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],99:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 (function() {
     'use strict';
 
@@ -2529,7 +2121,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],100:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2609,7 +2201,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],101:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2641,7 +2233,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],102:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 (function() {
 	'use strict';
 
@@ -2682,7 +2274,7 @@ module.exports =  angular.module('you-movin.services', [
 
 })();
 
-},{}],103:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 (function () {
     'use strict';
 

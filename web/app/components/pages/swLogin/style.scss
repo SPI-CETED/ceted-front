@@ -1,51 +1,46 @@
 sw-login {
 
-	.login-layout {
-		background-image: url('../img/bg-login.jpg');
-		
-		.panel-body {
-			background-color: rgba(255,255,255,0.85);
+	.login {
+		.container {
+			margin: 0 auto;
+			max-width: 400px;
 		}
 
-		.btn {
-			padding: 10px 15px;
-			text-transform: uppercase;
-			border-radius: 0;
+		.logo {
+			max-width: 100%;
+			display: block;
+			margin: 30px auto;
 		}
 
-		.login-avatar {
-		    width: 175px;
-		    height: 175px;
-		    display: block;
-		    margin: 20px auto 30px;
-		    border-radius: 50%;
-	
-		    img {
-		    	width: 100%;
-		    	border-radius: 50%;
-			}
+		legend {
+			color: #161616;
+			font-size: 25px;
+			border: 0;
+			margin-bottom: 25px;
 		}
-	}
 
-	.vd_input-wrapper  {
-		box-shadow: initial;
-		border: 0;
-		background-color: transparent;
+		label {
+			color: #161616;
+			display: block;
+			font-size: 25px;
+			font-weight: 400;
+		}
 
 		input {
-			background-color: #fff;
-			border: solid 1px #999;
-			font-size: 14px;
-			padding: 10px 10px 10px 38px;
+			width: 100%;
+			height: 50px;
+			border: solid 1px #B2B2B2;
+			line-height: 50px;
+			border-radius: 5px;
+			padding-left: 15px;
+			margin-bottom: 30px;
 		}
 
-		.menu-icon {
-			top: 12px;
+		.forgot-password {
+			color: #161616;
+			font-size: 15px;
+			margin-left: 45px;
+			text-decoration: underline;
 		}
 	}
-
-	.vd_content-section {
-		background: transparent;
-	}
-
 }
