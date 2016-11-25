@@ -5,12 +5,13 @@
 
 <div class="row sw-date-time-picker">
     <div class="col-lg-12 col-md-12 col-sm-12">
-        <div class="sw-date-time-picker__date pull-left" ng-class="(ctrl.onlyDate) ? 'sw-date-time-picker__date-full' : ''">
+        <div class="sw-date-time-picker__date" ng-class="(ctrl.onlyDate) ? 'sw-date-time-picker__date-full' : ''">
             <p class="input-group">
-                <input type="text" name="{{ctrl.componetName}}" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="ctrl.model"
+                <input type="text" name="{{ctrl.componetName}}" uib-datepicker-popup="dd/MM/yyyy" ng-model="ctrl.model"
                     datepicker-options="ctrl.options" data-ng-click="ctrl.opened = !ctrl.opened" is-open="ctrl.opened" on-open-focus="false"
                     current-text="{{:: 'TODAY' | translate }}" clear-text="{{:: 'CLEAR' | translate }}" close-text="{{:: 'CLOSE' | translate }}"
                     ng-required="ctrl.required" datepicker-options="ctrl.datepickerOptions" sw-datetimepicker-timezone ng-change="ctrl._onUpdate()"
+                    class="sw-date-time-picker-input"
                 />
 
                 <span class="input-group-btn">
