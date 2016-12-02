@@ -8,11 +8,11 @@
                         <legend>Seja bem-vindo ao CETED.<br>Faça login abaixo para continuar.</legend>
 
                         <label for="email">Seu e-mail:</label>
-                        <input id="email" name="email" type="text" >
-                        
+                        <input ng-model="ctrl.user.email" id="email" name="email" type="text" >
+
                         <label for="password">Sua senha:</label>
-                        <input id="password" name="password" type="password" >
-                        
+                        <input ng-model="ctrl.user.password" id="password" name="password" type="password" >
+
                         <button type="submit" class="bt bt--green">Entrar</button>
                         <a class="forgot-password" href="#">Esqueceu a senha?</a>
                     </fieldset>

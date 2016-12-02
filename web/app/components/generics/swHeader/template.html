@@ -1,21 +1,28 @@
 <nav>
 	<div class="container">
 		<h1 class="logo">
-            <img class="logo" src="img/login/logo.png" alt="logo">
+			<img class="logo" src="img/login/logo.png" alt="logo">
 		</h1>
 
 		<ul>
 			<li>
-				<a href="#">Projetos</a>
+				<a ui-sref="base.secured.project.create">Projetos</a>
 			</li>
-			<li class="active">
-				<a href="#">Adicionar Projeto</a>
-			</li>
+
 			<li>
-				<a href="#">Habilidades</a>
+				<a ui-sref="base.secured.project.list">Adicionar Projeto</a>
 			</li>
+
 			<li>
-				<a href="#">Sair</a>
+				<a ui-sref="base.secured.skill.list">Habilidades</a>
+			</li>
+
+			<li>
+				<a ui-sref="base.secured.user.create">Users</a>
+			</li>
+
+			<li>
+				<a ui-sref="auth">Sair</a>
 			</li>
 		</ul>
 	</div>

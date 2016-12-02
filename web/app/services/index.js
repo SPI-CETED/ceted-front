@@ -11,6 +11,7 @@ var pnotfyService = require('./pnotify-service');
 var profileService = require('./profile-service');
 var genderService = require('./gender-service');
 var maritialStatusService = require('./maritial-status-service');
+var skillService = require('./skill-service');
 
 module.exports =  angular.module('you-movin.services', [
     loaderService,
@@ -25,6 +26,7 @@ module.exports =  angular.module('you-movin.services', [
     pnotfyService,
     profileService,
     genderService,
-    maritialStatusService
+    maritialStatusService,
+    skillService
   ])
   .name;

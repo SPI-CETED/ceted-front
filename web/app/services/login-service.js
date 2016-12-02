@@ -2,7 +2,7 @@
     'use strict';
 
     function LoginService($rootScope, $http, CONFIG) {
-        var baseUrl = CONFIG.apiUrl + '/auth';
+        var baseUrl = 'http://localhost:8084/v1/users';
         var self = this;
 
         self.login = function(credentials) {

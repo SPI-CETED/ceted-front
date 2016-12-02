@@ -2,58 +2,55 @@
     'use strict';
 
     module.exports = [
-      function SwSkillListController() {
+      '$state',
+      'skillService',
+      function SwSkillListController($state, SkillService) {
           var self = this;
 
+          self.goEdit = function(data) {
+            $state.go('base.secured.skill.edit', {id: data.id, description: data.description});
+          };
+
+          self.tableSkillsOptions = {
+            title: 'Skills',
+            rowClick: self.goEdit,
+            showSearch: true,
+            showPaginator: true,
+            itemsByPage: 10,
+            columns:
+            [
+              {
+                title: 'Código',
+                model: 'id',
+                width: '50%'
+              },
+              {
+                title: 'Nome',
+                model: 'description',
+                width: '50%'
+              }
+            ]
+          };
+
           self.$onInit = function() {
-          	self.skills = [
-	          	{
-	          		Name: 'skill 1'
-	          	},
-	          	{
-	          		Name: 'skill 2'
-	          	},
-	          	{
-	          		Name: 'skill 3'
-	          	}
-	          ];
-
-	          self.goEdit = function(data) {
-	          	console.log(data);
-	          };
-
-	          self.tableSkillsOptions = {
-		        title: 'Skills',
-		        rowClick: self.goEdit,
-		        showSearch: true,
-		        showPaginator: true,
-		        itemsByPage: 10,
-		        columns:
-		        [
-		          {
-		            title: 'Nome',
-		            model: 'Name',
-		            width: '100%'
-		          }
-		        ]
-		      };
-
-		      init();
-          }
-
-          
+		          init();
+          };
 
           var init = function() {
           	updateGrid();
+            findAllSkills();
           };
 
           var updateGrid = function() {
           	self.skillsGrid = self.skills;
           };
 
-          
-
-	      
+          var findAllSkills = function() {
+            SkillService.list().then(function(data) {
+              self.skills = data.data.result;
+              updateGrid();
+            });
+          }
 
       }
     ];
