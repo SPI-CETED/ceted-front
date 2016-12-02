@@ -85,7 +85,7 @@ module.exports = [
 			})
 
 			.state('base.secured.skill.edit', {
-				url: '/edit',
+				url: '/edit/{id}',
 				views: {
 					'container@base': {
 						template: '<sw-skill-create>'
