@@ -4,10 +4,16 @@
 			<div class="col-md-12">
 				<form>
 					<fieldset>
-						<h2>Cadastro de habilidades</h2>
-						<label>Descrição:</label>
-						<input type="text" id="desc" name="desc">
-						<button class="bt">Adicionar</button>
+						<legend>Cadastro de habilidades</legend>
+						<div class="row">
+								<input ng-model="ctrl.skill.description" type="text" id="desc" name="desc">
+						</div>
+
+						<button ui-sref="base.secured.skill.list" class="bt bt--green pull-left">Listar</button>
+						<button ng-click="ctrl.save()" class="bt bt--green pull-right">Salvar</button>
+						<button ng-show="ctrl.skill.id" ng-click="ctrl.delete()" class="bt bt--red pull-right">Excluir</button>
+
+
 					</fieldset>
 				</form>
 			</div>

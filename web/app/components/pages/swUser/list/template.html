@@ -1,1 +1,44 @@
-<h1>User List Teste ok!</h1>
+<div class="user-list">
+	<div class="row">
+		<div class="col-md-12 container">
+			<h2>Pesquisa de Colaborador</h2>
+
+			<form name="search" class="search-form" ng-submit="ctrl.search(ctrl.searchTerms)">
+				<input type="text" 
+					   name="searchTerms" 
+					   placeholder="Nome do colaborador" 
+					   ng-model="ctrl.searchTerms"
+					   class="search-form-input"
+					   required>
+				<button class="bt bt--green">Pesquisar</button>
+			</form>
+	
+
+			<ul class="search-results">
+				<li ng-repeat="user in ctrl.users" class="search-result">
+					<h3>{{user.nome}}</h3>
+
+					<p>
+						Cidade: {{user.cidade}}
+					</p>
+
+					Habilidades:
+
+					<ul class="search-result-skills">
+						<li class="search-result-skill" ng-repeat="skill in user.skills">{{skill}}</li>
+					</ul>
+						
+					<div class="search-result-options">
+						<a href="#" class="bt bt--small bt--green">
+							Visualizar
+						</a>
+
+						<button class="bt bt--small bt--green">
+							Excluir
+						</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
