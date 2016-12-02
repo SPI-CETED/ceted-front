@@ -4,7 +4,7 @@ body {
 }
 
 .bt {
-	background-color: #33A859;
+	background-color: #ccc;
 	color: #fff;
 	text-align: center;
 	font-size: 25px;
@@ -41,5 +41,13 @@ body {
 		&::before {
  			right: 0;
 		}
+	}
+
+	&.bt--green {
+		background-color: #33A859;
+	}
+
+	&.bt--black {
+		background-color: #161616;
 	}
 }

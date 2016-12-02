@@ -1,0 +1,56 @@
+sw-project-create {
+
+	.project-create {
+
+		.container {
+			max-width: 1024px;
+			margin: 0 auto;  
+		}
+
+		legend {
+			color: #161616;
+			font-size: 35px;
+			border: 0;
+			margin-bottom: 25px;
+		}
+
+		label {
+			color: #161616;
+			display: block;
+			font-size: 25px;
+			font-weight: 400;
+		}
+
+		input,
+		textarea,
+		select {
+			width: 100%;
+			border: solid 1px #B2B2B2;
+			line-height: 50px;
+			border-radius: 5px;
+			padding-left: 15px;
+			margin-bottom: 30px;
+			background-color: #F5F5F5;
+		}
+
+		textarea {
+			height: 150px;
+		}
+
+		input,
+		select {
+			height: 50px;
+		}
+
+		.forgot-password {
+			color: #161616;
+			font-size: 15px;
+			margin-left: 45px;
+			text-decoration: underline;
+		}
+
+		.bt--green {
+			margin-left: 15px;
+		}
+	}
+}

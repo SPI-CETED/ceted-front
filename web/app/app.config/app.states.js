@@ -156,5 +156,52 @@ module.exports = [
 				}
 			})
 
+			// ---------------------------------------------------------
+			// Project
+			// ---------------------------------------------------------
+			.state('base.secured.project', {
+				url: '/project',
+				abstract: true,
+				data: {
+					requireLogin: true,
+				}
+			})
+
+			.state('base.secured.project.create', {
+				url: '/create',
+				views: {
+					'container@': {
+						template: '<sw-project-create>'
+					}
+				},
+				data: {
+					requireLogin: true,
+				}
+			})
+
+			.state('base.secured.project.edit', {
+				url: '/edit',
+				views: {
+					'container@': {
+						template: '<sw-project-edit>'
+					}
+				},
+				data: {
+					requireLogin: true,
+				}
+			})
+
+			.state('base.secured.project.list', {
+				url: '/list',
+				views: {
+					'container@': {
+						template: '<sw-project-list>'
+					}
+				},
+				data: {
+					requireLogin: true,
+				}
+			})
+
 	}
 ];

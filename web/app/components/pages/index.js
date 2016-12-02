@@ -7,6 +7,10 @@ var swUserCreate = require('./swUser/create');
 var swUserEdit = require('./swUser/edit');
 var swUserList = require('./swUser/list');
 
+var swProjectCreate = require('./swProject/create');
+var swProjectEdit = require('./swProject/edit');
+var swProjectList = require('./swProject/list');
+
 module.exports = angular.module('you-movin.components.pages', [
   swLogin,
 
@@ -15,5 +19,9 @@ module.exports = angular.module('you-movin.components.pages', [
 
   swUserCreate,
   swUserEdit,
-  swUserList
+  swUserList,
+
+  swProjectCreate,
+  swProjectEdit,
+  swProjectList
 ]).name;
