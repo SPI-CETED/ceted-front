@@ -123,7 +123,7 @@ module.exports = [
 			.state('base.secured.user.create', {
 				url: '/create',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-user-create>'
 					}
 				},
@@ -135,7 +135,7 @@ module.exports = [
 			.state('base.secured.user.edit', {
 				url: '/edit',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-user-edit>'
 					}
 				},
@@ -147,7 +147,7 @@ module.exports = [
 			.state('base.secured.user.list', {
 				url: '/list',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-user-list>'
 					}
 				},
@@ -170,7 +170,7 @@ module.exports = [
 			.state('base.secured.project.create', {
 				url: '/create',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-project-create>'
 					}
 				},
@@ -182,7 +182,7 @@ module.exports = [
 			.state('base.secured.project.edit', {
 				url: '/edit',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-project-edit>'
 					}
 				},
@@ -194,7 +194,7 @@ module.exports = [
 			.state('base.secured.project.list', {
 				url: '/list',
 				views: {
-					'container@': {
+					'container@base': {
 						template: '<sw-project-list>'
 					}
 				},
