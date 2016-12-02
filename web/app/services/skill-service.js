@@ -5,8 +5,12 @@
     var self = this;
     var BASE_URL = 'http://localhost:8084/v1/habilities';
 
-    self.create = function(hability) {
+		self.create = function(hability) {
       return $http.post(BASE_URL, hability);
+		};
+
+		self.update = function(hability) {
+      return $http.put(BASE_URL + '/' + hability.id, hability);
 		};
 
 		self.list = function() {

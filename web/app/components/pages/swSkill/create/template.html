@@ -9,8 +9,11 @@
 								<input ng-model="ctrl.skill.description" type="text" id="desc" name="desc">
 						</div>
 
-						<button ng-click="ctrl.save()" class="bt bt--green pull-right">Adicionar</button>
+						<button ui-sref="base.secured.skill.list" class="bt bt--green pull-left">Listar</button>
+						<button ng-click="ctrl.save()" class="bt bt--green pull-right">Salvar</button>
 						<button ng-show="ctrl.skill.id" ng-click="ctrl.delete()" class="bt bt--red pull-right">Excluir</button>
+
+
 					</fieldset>
 				</form>
 			</div>

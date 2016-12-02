@@ -19,10 +19,17 @@
           };
 
           self.save = function() {
-            skillService.create(self.skill).then(function(data) {
-              pnotifyService.success('Registro salvo com successo!');
-              self.skill = {};
-            });
+            if (self.skill.id) {
+              skillService.update(self.skill).then(function(data) {
+                pnotifyService.success('Registro salvo com successo!');
+              });
+            } else {
+              skillService.create(self.skill).then(function(data) {
+                pnotifyService.success('Registro salvo com successo!');
+                self.skill = {};
+              });
+            }
+
           };
 
           self.delete = function() {
