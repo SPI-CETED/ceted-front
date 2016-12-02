@@ -1,3 +1,32 @@
 sw-skill-create {
 
+	$textfield-height: 40px;
+	$container-max-width: 600px;
+
+	.container{
+		margin: 30px 0;
+		max-width: $container-max-width;
+	}
+
+	select,
+	input {
+		width: 100%;
+		height: $textfield-height;
+		border: solid 1px #B2B2B2;
+		line-height: $textfield-height;
+		border-radius: 5px;
+		padding-left: 15px;
+		margin-bottom: 15px;
+		background-color: #F5F5F5;
+		font-size: 16px;
+		color: #161616;
+	}
+
+	label {
+		color: #161616;
+		display: block;
+		font-size: 18px;
+		font-weight: 400;
+	}
+
 }
