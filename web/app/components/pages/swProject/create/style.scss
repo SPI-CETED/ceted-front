@@ -53,5 +53,25 @@ sw-project-create {
 		.bt--green {
 			margin-left: 15px;
 		}
+
+		.participants {
+			margin: 10px 0 50px;
+			padding: 0;
+			display: inline-block;
+			float: right;
+			list-style: none;
+
+			li {
+				float: left;
+				width: 50px;
+				height: 50px;
+				margin: 0 5px;
+			}
+
+			img {
+				max-width: 100%;
+				border-radius: 50%;
+			}
+		}
 	}
 }

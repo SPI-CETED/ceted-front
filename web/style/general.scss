@@ -26,7 +26,6 @@ body {
 		left: 0;
 		right: 100%;
 		bottom: 0;
-		background: #1e6635;
 		height: 4px;
 		-webkit-transition-property: right;
 		transition-property: right;
@@ -45,9 +44,17 @@ body {
 
 	&.bt--green {
 		background-color: #33A859;
+
+		&::before {
+			background: #1e6635;
+		}
 	}
 
 	&.bt--black {
 		background-color: #161616;
+
+		&::before {
+			background: #333;
+		}
 	}
 }
